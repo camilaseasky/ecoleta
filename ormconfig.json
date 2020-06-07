@@ -1,0 +1,24 @@
+{
+  "name": "default",
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "docker",
+  "database": "colect_nextlevel",
+  "entities": [
+    "./src/typeorm/entities/*.ts"
+  ],
+  "migrations": [
+    "./src/typeorm/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/typeorm/migrations"
+  },
+  "seeds": [
+    "src/typeorm/seeds/**/*{.ts,.js}"
+  ],
+  "factories": [
+    "src/typeorm/factories/**/*{.ts,.js}"
+  ]
+}
