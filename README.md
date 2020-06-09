@@ -89,7 +89,9 @@ entregar, mas não sabem onde podem levá-los.
  *  A necessidade de usar seeds no typeorm para a criação dos itens coletados automaticamente. Mas nada que uma pesquisada rápida não resolvesse! 
  
  
- :white_check_mark: Back-end Concluído!
+ 
+ 
+ Status do projeto:    :heavy_check_mark: Concluído
  
   
   
