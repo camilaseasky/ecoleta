@@ -86,10 +86,10 @@ entregar, mas não sabem onde podem levá-los.
  
  Além de colocar em prática o uso das tecnologias e conceitos que listei anteriormente, neste projeto me deparei com:
  *  O desafio de usar o relacionamento ManyToMany entre as entities do typeorm. Este tipo de relacionamento foi usado entre as entities points (pontos de coleta) e items (itens coletados por cada ponto). Para isto, usei o recurso de criar uma @joinTable na entity points e uma pivot table somente com as colunas pointsId e itemsId. 
- *  A necessidade de usar seeds no typeorm para a criação dos itens coletados automaticamente.
+ *  A necessidade de usar seeds no typeorm para a criação dos itens coletados automaticamente. Mas nada que uma pesquisada rápida não resolvesse! 
  
  
- 
+ :white_check_mark: Back-end Concluído!
  
   
   
