@@ -33,15 +33,27 @@ entregar, mas não sabem onde podem levá-los.
  
  :heart_eyes::heart_eyes::heart_eyes::heart_eyes::heart_eyes::heart_eyes:
  
- A API disponibiliza as seguintes funcionalidades através de suas respectivas rotas:
-  - Cadastrar ponto de coleta: /points 
+ ### As funcionalidades da API:
+ 1. Cadastrar ponto de coleta: 
+  
+  <img src="https://github.com/camilaseasky/ecoleta/blob/master/docs/createPoints.png" />
+  
+  Algumas observações importantes sobre o cadastro de um ponto de coleta: 
+  :point_down: 
+  
+  - [X]  Deve ser enviado um arquivo em image que será a logo exibida na aplicação;
+  - [X]  Os itens coletados pelo ponto, devem ter os seus ids enviados através do campo "items" e separados por ",";
+  
+  2. Visualizar ponto de coleta: 
+  
+  
  
  ## :star: O aprendizado:
  
- Além de colocar em prática o uso das tecnologias e conceitos que listei anteriormente, neste projeto me deparei com o desafio de usar
- o relacionamento ManyToMany entre as entities do typeorm. Este tipo de relacionamento foi usado entre as entities points (pontos de 
- coleta) e items (itens coletados por cada ponto). Para isto, usei o recurso de criar uma @joinTable na entity points e uma pivot table
- somente com as colunas pointsId e itemsId. 
+ Além de colocar em prática o uso das tecnologias e conceitos que listei anteriormente, neste projeto me deparei com:
+ *  O desafio de usar o relacionamento ManyToMany entre as entities do typeorm. Este tipo de relacionamento foi usado entre as entities points (pontos de coleta) e items (itens coletados por cada ponto). Para isto, usei o recurso de criar uma @joinTable na entity points e uma pivot table somente com as colunas pointsId e itemsId. 
+ *  A necessidade de usar seeds no typeorm para a criação dos itens coletados automaticamente.
+ 
  
  
  
