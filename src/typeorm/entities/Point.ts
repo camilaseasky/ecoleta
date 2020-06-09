@@ -44,8 +44,10 @@ class Point {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @ManyToMany(type => Item)
-  @JoinTable()
+  @ManyToMany(type => Item, {
+    cascade: true
+  })
+  @JoinTable({name:'points_items'})
   items : Item[]
 
 }

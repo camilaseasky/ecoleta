@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 import IPointsRepository from '../repositories/IPointsRepository';
 import IItemsRepository from '../repositories/IItemsRepository';
-import ICreateUpdatePointDTO from '../dtos/ICreateUpdatePointDTO';
 import Point from '../typeorm/entities/Point';
+import AppError from '../errors/AppError';
 
 interface IRequestPoint {
   image: string;
@@ -37,16 +37,16 @@ class CreatePointService {
       uf} = data;
 
     const {items} = data;
-
-    
     
     const itemsValidate = await this.itemsRepository.findByIds(items);
-
     
     if(items.length !== itemsValidate.length){
-      throw new Error('Itens não encontrados');
+      throw new AppError('Itens não encontrados');
     }
-    
+
+    if(!image){
+      throw new AppError('Image was not uploaded')
+    }
         
     const point = await this.pointsRepository.create(
       {

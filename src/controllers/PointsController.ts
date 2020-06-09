@@ -1,19 +1,19 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { getRepository } from 'typeorm';
 import CreatePointService from '../services/CreatePointService';
 import UpdatePointService from '../services/UpdatePointService';
-import ICreateUpdatePointDTO from '../dtos/ICreateUpdatePointDTO';
 import FindFilterPointsService from '../services/FindFilterPointsService';
 import ShowPointService from '../services/ShowPointService';
-
+import DeletePointService from '../services/DeletePointService';
+import Point from '../typeorm/entities/Point';
 
 export default class PointsController {
 
   
   public async create(request: Request, response: Response): Promise<Response> {
-        
+      
     const {
-      image,
       name,
       email,
       whatsapp,
@@ -21,14 +21,15 @@ export default class PointsController {
       longitude,
       city,
       uf,
-      items
-    }: ICreateUpdatePointDTO = request.body;
+      items: stringItems,
+    } = request.body;
 
+    const items = stringItems.split(',').map((item: string) => item.trim());
     
     const createPoint = container.resolve(CreatePointService);
 
     const point = await createPoint.execute({
-      image,
+      image: request.file?.filename || '',
       name,
       email,
       whatsapp,
@@ -38,7 +39,7 @@ export default class PointsController {
       uf,
       items
     });
-
+    
     return response.json(point);
   }
 
@@ -85,7 +86,6 @@ export default class PointsController {
     const {point_id} = request.params;
 
     const {
-      image,
       name,
       email,
       whatsapp,
@@ -93,14 +93,18 @@ export default class PointsController {
       longitude,
       city,
       uf,
-      items
+      items: stringItems,
     } = request.body;
 
-    const updatePoint = container.resolve(UpdatePointService);
+    const items = stringItems.split(',').map((item: string) => item.trim());
 
+    const updatePoint = container.resolve(UpdatePointService);
+   
+    
+    
     const point = await updatePoint.execute({
       id: point_id,
-      image,
+      image: request.file?.filename || '',
       name,
       email,
       whatsapp,
@@ -113,5 +117,15 @@ export default class PointsController {
 
     return response.json(point);
   }
-  
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+      const {point_id} = request.params
+      const deletePoint = container.resolve(DeletePointService);
+      
+      await deletePoint.execute(point_id);
+
+      return response.status(204).json({});
+
+  }
+
 }

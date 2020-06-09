@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getRepository, Repository} from 'typeorm';
+import { getRepository} from 'typeorm';
 import Item from '../typeorm/entities/Item';
 
 export default class ItemsController {

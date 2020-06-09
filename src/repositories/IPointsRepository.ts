@@ -9,5 +9,6 @@ export default interface IPointsRepository {
   findFilterPoints(data: IFindFilterPointsDTO): Promise<Point[]>;
   findById(point_id: string): Promise<Point | undefined>;
   showPointItems(point_id: string): Promise<IPointItemsDTO>;
+  deletePoint(point: Point): Promise<void>;
   
 }

@@ -1,9 +1,12 @@
 import { inject, injectable } from 'tsyringe';
+import path from 'path';
+import fs from 'fs';
+import uploadConfig from '../config/upload';
 import IPointsRepository from '../repositories/IPointsRepository';
 import IItemsRepository from '../repositories/IItemsRepository';
-import ICreateUpdatePointDTO from '../dtos/ICreateUpdatePointDTO';
-import IPointItemsDTO from '../dtos/IPointItemsDTO';
 import Point from '../typeorm/entities/Point';
+import AppError from '../errors/AppError';
+
 
 
 interface IRequest {
@@ -48,16 +51,28 @@ class UpdatePointService {
 
     
     if(items.length !== itemsValidate.length){
-      throw new Error('Itens não encontrados');
+      throw new AppError('Items does not found');
     }
 
     const point = await this.pointsRepository.findById(id);
 
     if(!point){
-      throw new Error('Point not found');
+      throw new AppError('Point not found');
     }
-        
-    point.image = image;
+
+    if(point.image && image){
+      const pointImageFilePath = path.join(uploadConfig.directory, point.image);
+      const pointImageFileExists = await fs.promises.stat(pointImageFilePath);
+
+      if(pointImageFileExists) {
+        await fs.promises.unlink(pointImageFilePath);
+      }
+    }
+
+    if(image){
+      point.image = image;
+    }
+       
     point.name = name;
     point.email = email;
     point.whatsapp = whatsapp;

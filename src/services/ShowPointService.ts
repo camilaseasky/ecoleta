@@ -1,6 +1,7 @@
 import IPointsRepository from '../repositories/IPointsRepository';
 import IPointItemsDTO from '../dtos/IPointItemsDTO';
 import { inject, injectable } from 'tsyringe';
+import AppError from '../errors/AppError';
 
 @injectable()
 class ShowPointsService {
@@ -15,7 +16,7 @@ class ShowPointsService {
     const point = this.pointsRepository.showPointItems(point_id);
 
     if(!point){
-      throw new Error('Point not found');
+      throw new AppError('Point not found');
     }
    
     return point;
