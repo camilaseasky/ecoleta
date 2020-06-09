@@ -38,14 +38,48 @@ entregar, mas não sabem onde podem levá-los.
   
   <img src="https://github.com/camilaseasky/ecoleta/blob/master/docs/createPoints.png" />
   
-  Algumas observações importantes sobre o cadastro de um ponto de coleta: 
-  :point_down: 
+  Algumas observações importantes sobre o cadastro de um ponto de coleta: :point_down: 
   
   - [X]  Deve ser enviado um arquivo em image que será a logo exibida na aplicação;
-  - [X]  Os itens coletados pelo ponto, devem ter os seus ids enviados através do campo "items" e separados por ",";
+  - [X]  Os itens coletados pelo ponto, devem ter os seus ids enviados através do campo "items" e separados por ",". Observando que os ids dos itens enviados deverão existir na tabela de itens do banco;
   
   2. Visualizar ponto de coleta: 
+
+  <img src="https://github.com/camilaseasky/ecoleta/blob/master/docs/showPoint.png" />
   
+  Observações: :point_down: 
+  
+  - [X]  O id do ponto deve ser enviado como request.params na url;
+  - [X]  Serão retornadas as informações do point e também de todos os items coletados por este;
+
+  3. Alterar informações do ponto de coleta: 
+
+  <img src="https://github.com/camilaseasky/ecoleta/blob/master/docs/updatePoint.png" />
+  
+  Observações: :point_down: 
+  
+  - [X]  O id do ponto deve ser enviado como request.params na url;
+  - [X]  Todos os campos de informações do ponto de coleta poderão ser alterados;
+  - [X]  O arquivo de imagem do ponto de coleta poderá ser alterado. Para isto basta selecionar um novo arquivo;
+  - [X]  Os itens coletados pelo ponto também poderão ser alterados, enviando novamente os ids dos itens que são coletados no campo items e separados por ','. Observando que os ids dos itens enviados deverão existir na tabela de itens do banco;
+  
+  4. Deletar um ponto de coleta: 
+
+  <img src="https://github.com/camilaseasky/ecoleta/blob/master/docs/deletePoint.png" />
+  
+  Observações: :point_down: 
+  
+  - [X]  O id do ponto deve ser enviado como request.params na url;
+  - [X]  Automaticamente, o vínculo dos itens com este ponto de coleta serão excluídos;
+
+  5. Listar os pontos de coleta de determinado estado, cidade e itens informados: 
+
+  <img src="https://github.com/camilaseasky/ecoleta/blob/master/docs/listFilteredPoints.png" />
+  
+  Observações: :point_down: 
+  
+  - [X]  Deverão ser informados os valores dos filtros: city, uf e items nos request.query;
+  - [X]  Enviar os ids dos itens que se deseja filtrar separados por ',' ;
   
  
  ## :star: O aprendizado:
