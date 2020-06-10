@@ -1,4 +1,4 @@
-<img src="https://github.com/camilaseasky/thinker/blob/master/imgs/main.jpg" width="300px"/>
+<img src="https://github.com/camilaseasky/ecoleta/blob/master/docs/main.jpg" width="300px"/>
 
 # eColeta
 
