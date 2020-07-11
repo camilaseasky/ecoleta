@@ -1,5 +1,9 @@
-# :recycle: eColeta
-## Repositório contendo o projeto do back-end da aplicação.
+<img src="https://github.com/camilaseasky/ecoleta/blob/master/docs/main.jpg" width="300px"/>
+
+# eColeta
+
+> Uma aplicação para cooperar com o meio ambiente e ainda aprender relacionamentos ManyToMany no typeorm!  :wink:
+
 
 ## :smiley: A ideia: 
 A ideia do eColeta foi criada pela Rocketseat para a semana NextLevel, na qual foi implementado usando as funcionalidades básicas
