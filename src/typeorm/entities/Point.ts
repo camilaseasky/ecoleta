@@ -1,3 +1,7 @@
+import {Expose} from 'class-transformer';
+
+import uploadConfig from '../../config/upload';
+
 import { Entity, 
         Column, 
         PrimaryGeneratedColumn, 
@@ -49,6 +53,14 @@ class Point {
   })
   @JoinTable({name:'points_items'})
   items : Item[]
+
+  @Expose({ name: 'image_url' })
+  getImageUrl(): string | null {
+    if (!this.image) {
+      return null;
+    }
+    return `${process.env.APP_API_URL}/uploads/${this.image}`;
+  }
 
 }
 

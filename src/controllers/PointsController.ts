@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { getRepository } from 'typeorm';
+import { classToClass } from 'class-transformer';
 import CreatePointService from '../services/CreatePointService';
 import UpdatePointService from '../services/UpdatePointService';
 import FindFilterPointsService from '../services/FindFilterPointsService';
@@ -40,7 +41,7 @@ export default class PointsController {
       items
     });
     
-    return response.json(point);
+    return response.json(classToClass(point));
   }
 
   public async index(request: Request, response: Response): Promise<Response> {
@@ -61,7 +62,7 @@ export default class PointsController {
       items: itemsParsed
     });
 
-    return response.json(points);
+    return response.json(classToClass(points));
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
@@ -73,7 +74,7 @@ export default class PointsController {
       
       const point = await showPoint.execute(point_id);
 
-      return response.json(point);
+      return response.json(classToClass(point));
     }  
     catch (err) {
       return response.status(400).json({ error: err.message });
@@ -115,7 +116,7 @@ export default class PointsController {
       items
     });
 
-    return response.json(point);
+    return response.json(classToClass(point));
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {

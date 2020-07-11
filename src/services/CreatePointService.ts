@@ -44,9 +44,9 @@ class CreatePointService {
       throw new AppError('Itens não encontrados');
     }
 
-    if(!image){
+    /*if(!image){
       throw new AppError('Image was not uploaded')
-    }
+    }*/
         
     const point = await this.pointsRepository.create(
       {
